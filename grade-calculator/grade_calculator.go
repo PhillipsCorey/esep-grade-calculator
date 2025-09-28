@@ -39,6 +39,10 @@ func NewGradeCalculator(usingPF bool) *GradeCalculator {
 }
 
 func (gc *GradeCalculator) GetFinalGrade() string {
+	if gc.usingPF {
+		return "USING PF"
+	}
+
 	numericalGrade := gc.calculateNumericalGrade()
 
 	if numericalGrade >= 90 {
@@ -107,4 +111,24 @@ func computeAverage(grades []Grade) float64 {
 	}
 
 	return float64(sum) / float64(len(grades))
+}
+
+func (gc *GradeCalculator) markFailing() {
+	gc.PFstate = false
+}
+
+func (gc *GradeCalculator) markPassing() {
+	gc.PFstate = true
+}
+
+func (gc *GradeCalculator) isPassingPF() bool {
+	if gc.usingPF {
+		return gc.PFstate
+	} else {
+		currGrade := gc.calculateNumericalGrade()
+		if currGrade >= 60 {
+			return true
+		}
+		return false
+	}
 }

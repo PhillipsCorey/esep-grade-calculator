@@ -104,7 +104,7 @@ func TestCallingPFWhileFalse(t *testing.T) {
 	actual_value := gradeCalculator.isPassingPF()
 
 	if expected_value != actual_value {
-		t.Errorf("Expected isPassingPF to return '%s'; got '%s' instead", expected_value, actual_value)
+		t.Errorf("Expected isPassingPF to return '%t'; got '%t' instead", expected_value, actual_value)
 	}
 }
 
@@ -117,12 +117,12 @@ func TestCallingPFWhilePass(t *testing.T) {
 	actual_value := gradeCalculator.isPassingPF()
 
 	if expected_value != actual_value {
-		t.Errorf("Expected isPassingPF to return '%s'; got '%s' instead", expected_value, actual_value)
+		t.Errorf("Expected isPassingPF to return '%t'; got '%t' instead", expected_value, actual_value)
 	}
 }
 
 func TestCallingPFWhileFail(t *testing.T) {
-	expected_value := true
+	expected_value := false
 
 	gradeCalculator := NewGradeCalculator(true)
 	gradeCalculator.markPassing()
@@ -131,7 +131,7 @@ func TestCallingPFWhileFail(t *testing.T) {
 	actual_value := gradeCalculator.isPassingPF()
 
 	if expected_value != actual_value {
-		t.Errorf("Expected isPassingPF to return '%s'; got '%s' instead", expected_value, actual_value)
+		t.Errorf("Expected isPassingPF to return '%t'; got '%t' instead", expected_value, actual_value)
 	}
 }
 
@@ -143,7 +143,7 @@ func TestCallingPFWhileDefault(t *testing.T) {
 	actual_value := gradeCalculator.isPassingPF()
 
 	if expected_value != actual_value {
-		t.Errorf("Expected isPassingPF to return '%s'; got '%s' instead", expected_value, actual_value)
+		t.Errorf("Expected isPassingPF to return '%t'; got '%t' instead", expected_value, actual_value)
 	}
 }
 
