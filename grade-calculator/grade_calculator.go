@@ -2,6 +2,8 @@ package esepunittests
 
 type GradeCalculator struct {
 	allAssignments []Grade
+	usingPF bool
+	PFstate bool
 }
 
 type GradeType int
@@ -28,9 +30,11 @@ type Grade struct {
 	Type  GradeType
 }
 
-func NewGradeCalculator() *GradeCalculator {
+func NewGradeCalculator(usingPF bool) *GradeCalculator {
 	return &GradeCalculator{
 		allAssignments: make([]Grade, 0),
+		usingPF: usingPF,
+		PFstate: false,
 	}
 }
 
